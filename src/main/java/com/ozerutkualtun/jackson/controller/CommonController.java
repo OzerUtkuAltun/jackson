@@ -27,4 +27,10 @@ public class CommonController {
     public String getUsersAsJson() {
         return commonService.serializeUserUsingJsonRootName(user);
     }
+
+    @GetMapping("/events")
+    public String getEventAsJson() {
+
+        return commonService.serializeEventWithDateSerializerUsingJsonSerialize();
+    }
 }
