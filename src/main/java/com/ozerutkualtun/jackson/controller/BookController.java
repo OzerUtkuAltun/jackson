@@ -3,9 +3,7 @@ package com.ozerutkualtun.jackson.controller;
 import com.ozerutkualtun.jackson.model.Book;
 import com.ozerutkualtun.jackson.service.BookService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("api/v1/books")
@@ -28,4 +26,13 @@ public class BookController {
             }
          */
     }
+
+
+    @PostMapping
+    public Book serializeJsonToBook() {
+
+        String serializedBook = "{\"bookId\":15,\"bookName\":\"Harry Potter & Philosopher Stone\"}";
+        return bookService.deserializeBookUsingJsonCreator(serializedBook);
+    }
+
 }

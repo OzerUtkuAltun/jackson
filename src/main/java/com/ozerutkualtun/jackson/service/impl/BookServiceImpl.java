@@ -23,4 +23,17 @@ public class BookServiceImpl implements BookService {
             return null;
         }
     }
+
+    @Override
+    public Book deserializeBookUsingJsonCreator(String json) {
+
+        Book book = null;
+        try {
+            book = objectMapper.readerFor(Book.class)
+                    .readValue(json);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        return book;
+    }
 }

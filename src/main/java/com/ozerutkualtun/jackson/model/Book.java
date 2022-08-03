@@ -1,10 +1,10 @@
 package com.ozerutkualtun.jackson.model;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import lombok.AllArgsConstructor;
 
-@AllArgsConstructor
 @JsonPropertyOrder({"name", "id"})
 public class Book {
 
@@ -29,4 +29,15 @@ public class Book {
         "bookName": "Lord of the Rings: Return of the King"
     }
      */
+
+    // Jackson Deserialization Annotation #1
+    @JsonCreator //It's very useful when we need to deserialize some JSON that doesn't exactly match the target entity we need to get.
+
+    public Book(
+            @JsonProperty("bookId") Integer id,
+            @JsonProperty("bookName") String name) {
+        this.id = id;
+        this.name = name;
+    }
 }
+
