@@ -1,5 +1,6 @@
 package com.ozerutkualtun.jackson.controller;
 
+import com.ozerutkualtun.jackson.model.EventWithSerializer;
 import com.ozerutkualtun.jackson.model.TypeEnum;
 import com.ozerutkualtun.jackson.model.User;
 import com.ozerutkualtun.jackson.model.Water;
@@ -35,6 +36,15 @@ public class CommonController {
 
         return commonService.serializeEventWithDateSerializerUsingJsonSerialize();
     }
+
+    @PostMapping("/events")
+    public EventWithSerializer deserializeToEvent() {
+
+        String json
+                = "{\"name\":\"party\",\"eventDate\":\"20-12-2014 02:30:00\"}";
+        return commonService.deserializeEventWithDateSerializerUsingJsonDeserialize(json);
+    }
+
 
     @PostMapping("/users")
     public User deserializeToUser() {

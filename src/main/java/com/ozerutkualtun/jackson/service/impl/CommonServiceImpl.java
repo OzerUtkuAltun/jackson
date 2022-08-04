@@ -103,4 +103,19 @@ public class CommonServiceImpl implements CommonService {
         }
         return water;
     }
+
+    @Override
+    public EventWithSerializer deserializeEventWithDateSerializerUsingJsonDeserialize(String json) {
+
+        EventWithSerializer event = null;
+
+        try {
+             event = new ObjectMapper()
+                    .readerFor(EventWithSerializer.class)
+                    .readValue(json);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        return event;
+    }
 }
