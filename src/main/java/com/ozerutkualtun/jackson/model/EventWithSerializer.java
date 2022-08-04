@@ -1,5 +1,6 @@
 package com.ozerutkualtun.jackson.model;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -12,6 +13,7 @@ import java.util.Date;
 @Getter
 public class EventWithSerializer {
 
+    @JsonAlias({ "eventName", "e_name" }) // defines one or more alternative names for a property during deserialization.
     private final String name;
 
     @JsonSerialize(using = CustomDateSerializer.class)

@@ -41,7 +41,7 @@ public class CommonController {
     public EventWithSerializer deserializeToEvent() {
 
         String json
-                = "{\"name\":\"party\",\"eventDate\":\"20-12-2014 02:30:00\"}";
+                = "{\"e_name\":\"party\",\"eventDate\":\"20-12-2014 02:30:00\"}";
         return commonService.deserializeEventWithDateSerializerUsingJsonDeserialize(json);
     }
 
