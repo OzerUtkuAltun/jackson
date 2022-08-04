@@ -2,6 +2,7 @@ package com.ozerutkualtun.jackson.controller;
 
 import com.ozerutkualtun.jackson.model.TypeEnum;
 import com.ozerutkualtun.jackson.model.User;
+import com.ozerutkualtun.jackson.model.Water;
 import com.ozerutkualtun.jackson.service.CommonService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,8 +37,15 @@ public class CommonController {
     }
 
     @PostMapping("/users")
-    public User deserializeUser() {
+    public User deserializeToUser() {
 
         return commonService.deserializeUserUsingJacksonInject();
+    }
+
+    @PostMapping("/waters")
+    public Water deserializeToWater() {
+
+        String json = "{\"id\":17,\"waterName\":\"Saka Su\"}";
+        return commonService.deserializeWaterUsingJsonSetter(json);
     }
 }

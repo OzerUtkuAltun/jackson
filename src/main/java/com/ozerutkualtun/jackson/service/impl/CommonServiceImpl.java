@@ -7,6 +7,7 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.ozerutkualtun.jackson.model.EventWithSerializer;
 import com.ozerutkualtun.jackson.model.TypeEnum;
 import com.ozerutkualtun.jackson.model.User;
+import com.ozerutkualtun.jackson.model.Water;
 import com.ozerutkualtun.jackson.service.CommonService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -89,5 +90,17 @@ public class CommonServiceImpl implements CommonService {
             e.printStackTrace();
         }
         return user;
+    }
+
+    @Override
+    public Water deserializeWaterUsingJsonSetter(String json) {
+
+        Water water = null;
+        try {
+            water = objectMapper.readerFor(Water.class).readValue(json);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        return water;
     }
 }

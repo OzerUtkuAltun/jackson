@@ -1,8 +1,8 @@
 package com.ozerutkualtun.jackson.service;
 
-import com.ozerutkualtun.jackson.model.EventWithSerializer;
 import com.ozerutkualtun.jackson.model.TypeEnum;
 import com.ozerutkualtun.jackson.model.User;
+import com.ozerutkualtun.jackson.model.Water;
 
 public interface CommonService {
 
@@ -13,5 +13,7 @@ public interface CommonService {
     String serializeEventWithDateSerializerUsingJsonSerialize();
 
     User deserializeUserUsingJacksonInject();
+
+    Water deserializeWaterUsingJsonSetter(String json);
 
 }
