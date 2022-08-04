@@ -5,6 +5,7 @@ import com.ozerutkualtun.jackson.model.User;
 import com.ozerutkualtun.jackson.service.CommonService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -32,5 +33,11 @@ public class CommonController {
     public String getEventAsJson() {
 
         return commonService.serializeEventWithDateSerializerUsingJsonSerialize();
+    }
+
+    @PostMapping("/users")
+    public User deserializeUser() {
+
+        return commonService.deserializeUserUsingJacksonInject();
     }
 }

@@ -11,4 +11,7 @@ public interface CommonService {
     String serializeUserUsingJsonRootName(User user);
 
     String serializeEventWithDateSerializerUsingJsonSerialize();
+
+    User deserializeUserUsingJacksonInject();
+
 }

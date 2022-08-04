@@ -1,6 +1,7 @@
 package com.ozerutkualtun.jackson.service.impl;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.InjectableValues;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.ozerutkualtun.jackson.model.EventWithSerializer;
@@ -72,5 +73,21 @@ public class CommonServiceImpl implements CommonService {
             e.printStackTrace();
             return null;
         }
+    }
+
+    @Override
+    public User deserializeUserUsingJacksonInject() {
+
+        String json = "{\"name\":\"Özer Utku Altun\"}";
+        InjectableValues inject = new InjectableValues.Std()
+                .addValue(Integer.class, 174);
+
+        User user = null;
+        try {
+            user = objectMapper.reader(inject).forType(User.class).readValue(json);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        return user;
     }
 }
