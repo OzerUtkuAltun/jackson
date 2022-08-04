@@ -12,6 +12,7 @@ import java.util.Map;
 @Setter
 //@JsonIgnoreProperties(value = {"id", "size"}) // Jackson Property Inclusion Annotation #1
 @JsonInclude(JsonInclude.Include.NON_NULL)  // Jackson Property Inclusion Annotation #4 : exclude properties with empty/null/default values.
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)  //Jackson Property Inclusion Annotation #5 : can override the default semantics of which properties are visible and which are not.
 public class House {
 
     @JsonIgnore // Jackson Property Inclusion Annotation #1
