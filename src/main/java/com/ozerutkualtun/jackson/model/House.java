@@ -1,9 +1,6 @@
 package com.ozerutkualtun.jackson.model;
 
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonIgnoreType;
+import com.fasterxml.jackson.annotation.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -14,6 +11,7 @@ import java.util.Map;
 @Getter
 @Setter
 //@JsonIgnoreProperties(value = {"id", "size"}) // Jackson Property Inclusion Annotation #1
+@JsonInclude(JsonInclude.Include.NON_NULL)  // Jackson Property Inclusion Annotation #4 : exclude properties with empty/null/default values.
 public class House {
 
     @JsonIgnore // Jackson Property Inclusion Annotation #1

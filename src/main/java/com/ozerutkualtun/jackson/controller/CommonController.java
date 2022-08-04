@@ -66,7 +66,7 @@ public class CommonController {
         location.put("city", "Istanbul");
         location.put("street", "Cherry Street");
 
-        House house = new House(1, location, 2000000L, 120, new House.Owner("f_name", "l_name"));
+        House house = new House(1, location, null, null, new House.Owner("f_name", "l_name"));
 
         return commonService.serializeHouse(house);
     }
