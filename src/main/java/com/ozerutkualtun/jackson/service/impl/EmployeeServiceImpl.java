@@ -22,4 +22,16 @@ public class EmployeeServiceImpl implements EmployeeService {
             return null;
         }
     }
+
+    @Override
+    public Employee deserializeToEmployeeUsingJsonAnySetter(String json) {
+
+        Employee employee = null;
+        try {
+            employee = objectMapper.readerFor(Employee.class).readValue(json);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        return employee;
+    }
 }

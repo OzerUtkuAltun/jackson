@@ -4,6 +4,7 @@ import com.ozerutkualtun.jackson.model.Employee;
 import com.ozerutkualtun.jackson.service.EmployeeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -40,9 +41,13 @@ public class EmployeeController {
             "age": "23"
         }
          */
-
-
     }
 
+    @PostMapping
+    public Employee deserializeEmployee() {
 
+        String json
+                = "{\"name\":\"My bean\",\"attr2\":\"val2\",\"attr1\":\"val1\"}";
+        return employeeService.deserializeToEmployeeUsingJsonAnySetter(json);
+    }
 }
