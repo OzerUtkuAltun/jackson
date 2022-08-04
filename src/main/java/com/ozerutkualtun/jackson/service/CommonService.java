@@ -1,9 +1,6 @@
 package com.ozerutkualtun.jackson.service;
 
-import com.ozerutkualtun.jackson.model.EventWithSerializer;
-import com.ozerutkualtun.jackson.model.TypeEnum;
-import com.ozerutkualtun.jackson.model.User;
-import com.ozerutkualtun.jackson.model.Water;
+import com.ozerutkualtun.jackson.model.*;
 
 public interface CommonService {
 
@@ -19,4 +16,5 @@ public interface CommonService {
 
     EventWithSerializer deserializeEventWithDateSerializerUsingJsonDeserialize(String json);
 
+    String serializeHouse(House house);
 }

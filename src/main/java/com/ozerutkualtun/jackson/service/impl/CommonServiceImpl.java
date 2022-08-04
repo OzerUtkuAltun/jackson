@@ -4,10 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.InjectableValues;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import com.ozerutkualtun.jackson.model.EventWithSerializer;
-import com.ozerutkualtun.jackson.model.TypeEnum;
-import com.ozerutkualtun.jackson.model.User;
-import com.ozerutkualtun.jackson.model.Water;
+import com.ozerutkualtun.jackson.model.*;
 import com.ozerutkualtun.jackson.service.CommonService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -110,12 +107,23 @@ public class CommonServiceImpl implements CommonService {
         EventWithSerializer event = null;
 
         try {
-             event = new ObjectMapper()
+            event = new ObjectMapper()
                     .readerFor(EventWithSerializer.class)
                     .readValue(json);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
         return event;
+    }
+
+    @Override
+    public String serializeHouse(House house) {
+
+        try {
+            return objectMapper.writeValueAsString(house);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }

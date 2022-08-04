@@ -1,9 +1,6 @@
 package com.ozerutkualtun.jackson.controller;
 
-import com.ozerutkualtun.jackson.model.EventWithSerializer;
-import com.ozerutkualtun.jackson.model.TypeEnum;
-import com.ozerutkualtun.jackson.model.User;
-import com.ozerutkualtun.jackson.model.Water;
+import com.ozerutkualtun.jackson.model.*;
 import com.ozerutkualtun.jackson.service.CommonService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,8 +8,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @RestController
-@RequestMapping("api/v1/commons")
+@RequestMapping("api/v1/common")
 @RequiredArgsConstructor
 public class CommonController {
 
@@ -58,4 +58,17 @@ public class CommonController {
         String json = "{\"id\":17,\"waterName\":\"Saka Su\"}";
         return commonService.deserializeWaterUsingJsonSetter(json);
     }
+
+    @GetMapping("/houses")
+    public String serializeHouse() {
+
+        Map<String, String> location = new HashMap<>();
+        location.put("city", "Istanbul");
+        location.put("street", "Cherry Street");
+
+        House house = new House(1, location, 2000000L, 120);
+
+        return commonService.serializeHouse(house);
+    }
+
 }
