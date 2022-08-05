@@ -126,4 +126,71 @@ public class CommonServiceImpl implements CommonService {
             return null;
         }
     }
+
+    @Override
+    public String serializeZooWithDog() {
+
+        Zoo.Dog dog = new Zoo.Dog("Patik", 37.3);
+        Zoo zoo = new Zoo(dog);
+
+        try {
+            return objectMapper.writeValueAsString(zoo);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+            return null;
+        }
+
+        /*
+        OUTPUT
+        {
+          "animal": {
+            "type": "dog",
+            "name": "Patik",
+            "barkVolume": 37.3
+          }
+        }
+
+         */
+    }
+
+    @Override
+    public String serializeZooWithCat() {
+
+        Zoo.Cat cat = new Zoo.Cat("Fındık", true, 9);
+        Zoo zoo = new Zoo(cat);
+
+        try {
+            return objectMapper.writeValueAsString(zoo);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+            return null;
+        }
+
+        /*
+        OUTPUT: (Not: type field'ı @JsonTypeName("cat") kısmından geliyor)
+
+        {
+              "animal": {
+                "type": "cat",
+                "name": "Fındık",
+                "lives": 9
+              }
+        }
+
+         */
+
+    }
+
+    @Override
+    public Zoo deserializeZoo() {
+
+        String json = "{\"animal\":{\"name\":\"lacy\",\"type\":\"cat\", \"likesCream\": true, \"lives\": 9}}";
+
+        try {
+            return objectMapper.readerFor(Zoo.class).readValue(json);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }

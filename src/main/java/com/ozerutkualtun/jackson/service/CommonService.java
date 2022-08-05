@@ -17,4 +17,10 @@ public interface CommonService {
     EventWithSerializer deserializeEventWithDateSerializerUsingJsonDeserialize(String json);
 
     String serializeHouse(House house);
+
+    String serializeZooWithDog();
+
+    String serializeZooWithCat();
+
+    Zoo deserializeZoo();
 }

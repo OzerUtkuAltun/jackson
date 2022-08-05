@@ -71,4 +71,20 @@ public class CommonController {
         return commonService.serializeHouse(house);
     }
 
+    @GetMapping("/zoo/dogs")
+    public String serializeZooWithDog() {
+        return commonService.serializeZooWithDog();
+    }
+
+
+    @GetMapping("/zoo/cats")
+    public String serializeZooWithCat() {
+        return commonService.serializeZooWithCat();
+    }
+
+    @PostMapping("zoo")
+    public Zoo deserializeZoo() {
+        return commonService.deserializeZoo();
+    }
+
 }
